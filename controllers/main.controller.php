@@ -20,10 +20,11 @@ namespace Framework\MainController
     // Creates the template
     $template = new \Framework\Template(array(
       'title' => 'Home',
-      'activities' => $activities
+      'activities' => $activities,
+      'stylesheets' => array_merge(array('/public/dist/css/index.css'), \Framework\Template::$t_DefaultVariables['stylesheets'])
     ));
 
     // Renders the template
-    $template->render('index.php');
+    $template->render('index.view.php');
   }
 }

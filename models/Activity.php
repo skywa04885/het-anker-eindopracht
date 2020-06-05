@@ -16,6 +16,7 @@ namespace Framework\Models
     var $a_Used = null;
     var $a_DeadLine = null;
     var $a_ID = null;
+    var $a_Image = null;
 
     /**
      * The default constructor for an id
@@ -33,7 +34,8 @@ namespace Framework\Models
     public function __construct(
       $a_Name, $a_Description, $a_Location,
       $a_StartTime, $a_EndTime, $a_Max,
-      $a_Used, $a_DeadLine, $a_ID = null
+      $a_Used, $a_DeadLine, $a_Image,
+      $a_ID = null
     )
     {
       $this->a_Name = $a_Name;
@@ -44,6 +46,7 @@ namespace Framework\Models
       $this->a_Max = $a_Max;
       $this->a_Used = $a_Used;
       $this->a_DeadLine = $a_DeadLine;
+      $this->a_Image = $a_Image;
       $this->a_ID = $a_ID;
     }
 
@@ -58,7 +61,8 @@ namespace Framework\Models
       return new Activity(
         $e['a_name'], $e['a_desc'], $e['a_location'],
         $e['a_start_time'], $e['a_end_time'], $e['a_max'],
-        $e['a_used'], $e['a_deadline'], $e['a_id']
+        $e['a_used'], $e['a_deadline'], $e['a_image'],
+        $e['a_id']
       );
     }
 

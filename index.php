@@ -15,22 +15,9 @@
 include_once(__DIR__ . '/src/mvc/Router.php');
 include_once(__DIR__ . '/src/mvc/Template.php');
 include_once(__DIR__ . '/src/pdo.php');
-include_once(__DIR__ . '/routes/main.php');
+include_once(__DIR__ . '/routes/main.route.php');
 
 use Framework\Database;
-
-// ==== Connects to the database ====
-
-$conn = null;
-
-// Tries to connect to MySQL
-try {
-  // Connects
-  $conn = Framework\Database\connect('anker');
-} catch (Exception $e)
-{
-}
-
 // ==== Sets the default stuff ====
 
 // Sets the default template dir
@@ -68,6 +55,31 @@ function parseUrl($raw)
 
   // Returns the result
   return $result;
+}
+
+// ==== Connects to the database ====
+
+$conn = null;
+
+// Tries to connect to MySQL
+try {
+  // Connects
+  $conn = Framework\Database\connect('anker');
+} catch (Exception $e)
+{
+  // Creates the template
+  $template = new Framework\Template(array(
+    'errorCode' => '500',
+    'errorMessage' => 'Database error !',
+    'title' => 'Could not connect to MySQL',
+    'errorDetails' => strval($e)
+  ));
+
+  // Renders the template
+  $template->render('error.php');
+
+  // Closes
+  die();
 }
 
 // ==== Here starts the serving ====

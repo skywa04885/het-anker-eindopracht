@@ -14,7 +14,7 @@
 
 namespace Framework\MainRouter
 {
-  include_once(__DIR__ . '/../controllers/main.php');
+  include_once(__DIR__ . '/../controllers/main.controller.php');
   
   function add($router)
   {

@@ -27,7 +27,8 @@ namespace Framework
      */
     public function getValue($key)
     {
-      return $this->t_RenderVariables[$key];
+      if (!isset($this->t_RenderVariables[$key])) return null;
+      else return $this->t_RenderVariables[$key];
     }
 
     /**
@@ -44,7 +45,7 @@ namespace Framework
       // Loops over the default variables and appends them
       // - If they're not in the variables
       foreach (Template::$t_DefaultVariables as $key => $value)
-        if ($this->t_Veriables[$key] === null)
+        if (!isset($this->t_Variables[$key]))
           $this->t_RenderVariables[$key] = $value;
       
       // Merges the other variables with the veriables array
@@ -56,7 +57,7 @@ namespace Framework
       // ==== Renders the file ====
 
       // Sets the constant for the include file
-      define('render_include_sub', $filename);
+      define('render_include_sub', Template::$t_Dir . '/' . $filename);
 
       // Includes the base file
       include_once(Template::$t_Dir . '/' . Template::$t_BaseFile);

@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS `activities` (
     `a_end_time` TIME NOT NULL,
     `a_max` INT(11) NOT NULL,
     `a_used` INT(11) NOT NULL DEFAULT 0,
-    `a_deadline` DATE
+    `a_deadline` DATE,
+    `a_image` varchar(255) not null
 );
 
 -- Creates the personal table

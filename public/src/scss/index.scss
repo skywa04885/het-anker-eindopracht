@@ -1,0 +1,92 @@
+@import './styles.scss';
+
+.index-wrapper__activiteiten__activiteit {
+  display: flex;
+  
+  &:not(:last-child)
+  {
+    margin-bottom: 1.2rem;
+  }
+
+  & > div {
+    &:nth-child(1)
+    {
+      flex: 3;
+    }
+
+    &:nth-child(2) {
+      flex: 3;
+    }
+  }
+
+  & > .index-wrapper__activiteiten__activiteit__left {
+    & > div {
+      width: calc(100% - 1.6rem);
+      height: 17vh;
+      min-height: 120px;
+      margin: 0 0.8rem;
+      background-position: center;
+      border-radius: $border-radius;
+      transition: all .6s;
+      position: relative;
+
+      &:hover > a {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+
+      & > a {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translateY(-50%)  translateX(-40px);
+        opacity: 0;
+
+        & > span {
+          color: map-get($colors, 'primary');
+          vertical-align: middle;
+          display: inline-block;
+        }
+
+        & > svg {
+          vertical-align: middle;
+          display: inline-block;
+          fill: map-get($colors, 'primary');
+        }
+      }
+
+      &:hover {
+        opacity: 0.7;
+        background-position-y: 35%;
+      }
+    }
+  }
+
+  & > .index-wrapper__activiteiten__activiteit__right {
+    & > p {
+      line-height: 1.2rem;
+
+      & > strong {
+        color: map-get($colors, 'text-title');
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Lora', sans-serif;
+      }
+
+      & > small {
+        color: map-get($colors, 'text-subtitle');
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: 'Lora', sans-serif;
+
+        & > span {
+          color: map-get($colors, 'secondary');
+        }
+      }
+    }
+
+    & > a {
+      margin-left: 0;
+    }
+  }
+}
