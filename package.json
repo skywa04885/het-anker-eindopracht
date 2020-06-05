@@ -1,0 +1,16 @@
+{
+  "name": "PHP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss-watch": "node-sass ./public/src/scss --output-style compressed --watch --recursive --output ./public/dist/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "uglify-js": "^3.9.4"
+  }
+}
