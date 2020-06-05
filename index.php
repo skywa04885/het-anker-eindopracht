@@ -12,10 +12,40 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// ==== Includes the required files ====
-
 include_once(__DIR__ . '/src/mvc/Router.php');
-include_once(__DIR__ . '/src/mvc/Renderer.php');
+include_once(__DIR__ . '/src/mvc/Template.php');
+include_once(__DIR__ . '/src/pdo.php');
+include_once(__DIR__ . '/routes/main.php');
+
+use Framework\Database;
+
+// ==== Connects to the database ====
+
+$conn = null;
+
+// Tries to connect to MySQL
+try {
+  // Connects
+  $conn = Framework\Database\connect('anker');
+} catch (Exception $e)
+{
+}
+
+// ==== Sets the default stuff ====
+
+// Sets the default template dir
+Framework\Template::$t_Dir = __DIR__ . '/views';
+Framework\Template::$t_BaseFile = 'base.php';
+
+// Sets the default variables
+Framework\Template::$t_DefaultVariables = array(
+  'stylesheets' => array('/public/dist/css/reset.css', '/public/dist/css/default.css'),
+  'keywords' => 'test,page,school',
+  'author' => 'Luke A.C.A. Rieff',
+  'description' => 'This is an page of my website',
+  'copyright' => 'Het Anker',
+  'title' => 'Onbekende pagina'
+);
 
 // ==== Function definitions ====
 
@@ -44,54 +74,38 @@ function parseUrl($raw)
 
 // Parses the url, so we have the path only
 $path = parseUrl($_SERVER['REQUEST_URI']);
-
-// Creats the rendered
-$renderer = new Renderer('/views/base.php', '/views/error.php', __DIR__, "/public/dist");
 // Creates the router
-$router = new Router($path, $renderer);
-
-// Adds the required paths
-include_once(__DIR__ . '/routes/main.php');
-
-// ==== Adds the default config ====
-
-// Sets the default meta
-$renderer->updateMeta(
-  'Unknown page',
-  'unknown,page,school',
-  'This page has nothing specified by the creator !',
-  'Het Anker',
-  'Luke A.C.A. Rieff'
-);
-
-// Sets the stylesheets
-$renderer->addStylesheets('/css/reset.css', '/css/default.css');
+$router = new Router($path, $conn);
 
 // ==== Executes the router and renderer ====
+
+Framework\MainRouter\add($router);
 
 // Executes the router
 try {
   // Handles the routes
   if (!$router->handleRoutes())
   {
-    // ==== Prepares the error page ====
+    // Creates the template
+    $template = new Framework\Template(array(
+      'errorCode' => '404',
+      'errorMessage' => 'Pagina niet gevonden ! !',
+      'title' => 'Pagina niet gevonden'
+    ));
 
-    define('error_code', 404);
-    define('error_message', 'Page not found !');
-    define('error_description', 'Please try another URL, 
-    this one was not found on the server !');
-
-    // ==== Sends the error page ====
-
-    $renderer->setFile('/views/error.php');
+    // Renders the template
+    $template->render('error.php');
   }
 } catch (Exception $e)
 {
-  // ==== Prepares the error page ====
+  // Creates the template
+  $template = new Framework\Template(array(
+    'errorCode' => '500',
+    'errorMessage' => 'Server error !',
+    'title' => 'Server Error',
+    'errorDetails' => strval($e)
+  ));
 
-  // ==== Sends the error page ====
-  $renderer->setFile('/views/error.php');
+  // Renders the template
+  $template->render('error.php');
 }
-
-// ==== Renders the file ====
-$renderer->render();

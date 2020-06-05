@@ -45,9 +45,9 @@ class Route
   /**
    * Executes the current route
    * ---
-   * void
+   * @Param conn
    */
-  public function executeCallable($renderer)
+  public function executeCallable($conn)
   {
     // Checks if the function is valid
     if (!is_callable($this->r_Callable))
@@ -55,7 +55,7 @@ class Route
       throw new Exception('Callable of path: \'{$this->r_Path}\' must be an function !');
     }
     // Executes the function
-    call_user_func($this->r_Callable, $renderer);
+    call_user_func($this->r_Callable, $conn);
   }
 };
 
@@ -65,17 +65,18 @@ class Router
   var $r_RoutesGet = null;
   var $r_RoutesPost = null;
   var $r_Path = null;
-  var $r_Renderer = null;
+  var $r_Conn = null;
 
   /**
    * Default constructor for the router
    * ---
    * @Param r_Path
+   * @Param r_Conn
    */
-  public function __construct($r_Path, $r_Renderer)
+  public function __construct($r_Path, $r_Conn)
   {
     $this->r_Path = $r_Path;
-    $this->r_Renderer = $r_Renderer;
+    $this->r_Conn = $r_Conn;
     // ==== Initializes the arrays ====
     $this->r_RoutesGet = array();
     $this->r_RoutesPost = array();
@@ -149,7 +150,7 @@ class Router
         // Sets found to true
         $found = TRUE;
         // Executes the function
-        $searchArray[$i]->executeCallable($this->r_Renderer);
+        $searchArray[$i]->executeCallable($this->r_Conn);
         // Breaks from the loop
         break;
       }

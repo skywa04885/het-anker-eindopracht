@@ -1,12 +1,12 @@
 <div class="error-wrapper">
   <!-- The left side of the error wrapper -->
   <div class="error-wrapper__left">
-    <h1><?= constant('error_code') ?></h1>
-    <h2><?= constant('error_message') ?></h2>
+    <h1><?= $this->getValue('errorCode') ?></h1>
+    <h2><?= $this->getValue('errorMessage') ?></h2>
   </div>
   <!-- The right side of the error wrapper -->
   <div class="error-wrapper__right">
-    <p><?= constant('error_description') ?></p>
+    <p><?= $this->getValue('errorDetails') ?></p>
     <hr />
     <p><small>Request information</small></p>
     <table>
