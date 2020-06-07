@@ -20,19 +20,23 @@ include_once(__DIR__ . '/routes/main.route.php');
 use Framework\Database;
 // ==== Sets the default stuff ====
 
-// Sets the default template dir
-Framework\Template::$t_Dir = __DIR__ . '/views';
-Framework\Template::$t_BaseFile = 'base.php';
+// Checks if we need to set the basic stuff, only with get required
+if (strtolower($_SERVER['REQUEST_METHOD']) === 'get')
+{
+  // Sets the default template dir
+  Framework\Template::$t_Dir = __DIR__ . '/views';
+  Framework\Template::$t_BaseFile = 'base.php';
 
-// Sets the default variables
-Framework\Template::$t_DefaultVariables = array(
-  'stylesheets' => array('/public/dist/css/reset.css', '/public/dist/css/default.css'),
-  'keywords' => 'test,page,school',
-  'author' => 'Luke A.C.A. Rieff',
-  'description' => 'This is an page of my website',
-  'copyright' => 'Het Anker',
-  'title' => 'Onbekende pagina'
-);
+  // Sets the default variables
+  Framework\Template::$t_DefaultVariables = array(
+    'stylesheets' => array('/public/dist/css/reset.css', '/public/dist/css/default.css'),
+    'keywords' => 'test,page,school',
+    'author' => 'Luke A.C.A. Rieff',
+    'description' => 'This is an page of my website',
+    'copyright' => 'Het Anker',
+    'title' => 'Onbekende pagina'
+  );
+}
 
 // ==== Function definitions ====
 
@@ -46,12 +50,12 @@ function parseUrl($raw)
   $result = '';
 
   // Checks if we even have an get parameter / parameters
-  if (strpos($raw, '?') == FALSE) $result = $raw;
+  if (strpos($raw, '?') === FALSE) $result = $raw;
   else $result = substr($raw, 0, strpos($raw, '?'));
 
   // Removes the not required '/'
-  if (substr($result, -1) == '/') $result = substr($result, 0, -1);
-  if ($result == '') $result = '/';
+  if (substr($result, -1) === '/') $result = substr($result, 0, -1);
+  if ($result === '') $result = '/';
 
   // Returns the result
   return $result;

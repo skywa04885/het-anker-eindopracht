@@ -23,7 +23,7 @@ namespace Framework\MainRouter
     });
     
     $router->get('/contact', function ($conn) {
-      $renderer->setFile('/views/contact.php');
+      \Framework\MainController\getContact($conn);
     });
     
     $router->get('/about', function ($conn) {
@@ -32,6 +32,10 @@ namespace Framework\MainRouter
     
     $router->get('/admin', function ($conn) {
       $renderer->setFile('/views/admin.php');
+    });
+
+    $router->post('/rest/contact-submit', function ($conn) {
+      \Framework\MainController\postContact($conn);
     });
   }
 }

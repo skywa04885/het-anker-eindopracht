@@ -70,14 +70,14 @@
         color: map-get($colors, 'text-title');
         font-size: 1.2rem;
         font-weight: 600;
-        font-family: 'Lora', sans-serif;
+        font-family: 'Lora', serif;
       }
 
       & > small {
         color: map-get($colors, 'text-subtitle');
         font-size: 1rem;
         font-weight: 600;
-        font-family: 'Lora', sans-serif;
+        font-family: 'Lora', serif;
 
         & > span {
           color: map-get($colors, 'secondary');
@@ -87,6 +87,27 @@
 
     & > a {
       margin-left: 0;
+    }
+  }
+}
+
+.index-wrapper__information {
+  margin: 0 2.8rem;
+
+  & > p {
+    color: map-get($colors, 'text-subtitle');
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+
+    & > strong {
+      color: map-get($colors, 'text-title');
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 0.7rem;
+      margin-top: 1.2rem;
+      font-family: 'Lora', serif;
+      font-weight: 600;
     }
   }
 }

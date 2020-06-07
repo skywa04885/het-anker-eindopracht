@@ -16,7 +16,28 @@
 
 <div class="index-wrapper">
   <div class="index-wrapper__activiteiten">
-    <h2>Activiteiten</h2>
+    <h2>Save the date: Personeelsdag 29 juni 2019</h2>
+    <hr />
+    <div class="index-wrapper__information">
+      <p>
+        Vrijdag 29 juni 2019 is de personeelsdag van onze school “Het Anker”. 
+        Een dag in het teken van samen zijn met je collega’s. Samen 
+        actieve en creatieve workshops doen. Een dag om niet te vergeten dus!
+        <strong>Locaties</strong>
+        De personeelsdag vindt plaats op diverse locaties in het land: Nijmegen, Arnhem, Zandvoort en Utrecht
+        <strong>Activiteiten</strong>
+        We hebben een gevarieerd programma met actieve en creatieve workshops onder leiding van collega’s, studenten en externen. Keuze genoeg dus! 
+        <strong>Inschijven</strong>
+        Vanaf dinsdag 1 mei 2019 is het mogelijk om in te schrijven. 
+        Je kunt je via de links op deze pagina inschrijven! 
+        Je kunt twee activiteiten kiezen, één voor de ochtend 
+        en één voor de middag. Voor bepaalde activiteiten 
+        zijn er meer plekken beschikbaar, dan voor andere 
+        activiteiten. Wil jij dus activiteiten kiezen 
+        die je erg leuk vindt? Schrijf je dan op tijd in!
+      </p>
+    </div>
+    <h3>Activiteiten</h3>
     <hr />
     <ul>
       <?php foreach ($this->getValue('activities') as $activity): ?>
@@ -40,6 +61,7 @@
                 <span><?= $activity->a_StartTime ?></span>
                 -
                 <span><?= $activity->a_EndTime ?></span>
+                , Plekken: <?=  $activity->a_Max - $activity->a_Used ?> / <?= $activity->a_Max ?>
               </small>
             </p>
             <a class="btn btn-primary">Bekijk activiteit</a>
