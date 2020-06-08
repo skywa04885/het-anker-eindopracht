@@ -1,0 +1,87 @@
+@import 'styles.scss';
+
+.wrapper__back {
+  margin-left: 1rem;
+
+  & > a {
+    margin-left: 0;
+  }
+}
+
+.wrapper__activity {
+  & > div {
+    margin: 1rem;
+  }
+
+  & > .wrapper__activity__right {
+    & > a {
+      margin-left: 0;
+    }
+
+    & > h2 {
+      margin-left: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    & > p {
+      color: map-get($colors, 'text-subtitle');
+      font-weight: 400;
+      line-height: 1.2rem;
+      font-style: italic;
+
+      &:nth-of-type(2)
+      {
+        color: map-get($colors, 'text-muted');
+        font-size: 0.9rem;
+        font-style: normal;
+      }
+
+      & > strong {
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        display: block;
+        font-size: 1.2rem;
+        font-family: 'Lora', serif;
+        color: map-get($colors, 'primary');
+      }
+
+      & > small {
+        color: map-get($colors, 'primary');
+        font-family: 'Lora', serif;
+      }
+    }
+  }
+
+  & > .wrapper__activity__left {
+    position: relative;
+    min-height: 300px;
+
+    & > .wrapper__activity__left-banner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: $border-radius;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    display: flex;
+
+    & > div {
+      flex: 3;
+    } 
+  }
+
+  @media only screen and (max-width: 900px) {
+    & > div {
+      width: calc(100% - 2 * 1rem);
+    } 
+  }
+}

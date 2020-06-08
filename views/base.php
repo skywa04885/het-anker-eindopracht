@@ -29,7 +29,7 @@
         <div class="wrapper-nav__bar__right">
           <ul>
             <li>
-              <a href="/login" class="btn btn-accent" rel="nofollow">Login</a>
+              <a href="/login" class="btn btn-accent" rel="nofollow">Log in</a>
             </li>
           </ul>
         </div>

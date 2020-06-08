@@ -53,7 +53,7 @@ namespace Framework\Models
     /**
      * Makes an object / array / map an activity
      * ---
-     * @Param $e
+     * @Param e
      */
     public static function fromRaw($e)
     {
@@ -66,6 +66,37 @@ namespace Framework\Models
       );
     }
 
+    public static function getByID($conn, $id)
+    {
+      // ==== Prepares the query ====
+
+      // Prepares the statement
+      $stmt = $conn->prepare(
+        'SELECT * FROM activities where a_id = :aid'
+      );
+
+      // Binds the parameters
+      $stmt->bindParam(':aid', $id, PDO::PARAM_INT);
+
+      // ==== Gets the result ====
+
+      // Executes
+      $stmt->execute();
+
+      // Gets the data
+      $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // Returns the data
+      if (count($data) === 0) return null;
+      else return Activity::fromRaw($data[0]);
+    }
+
+    /**
+     * Gets all activities
+     * ---
+     * @Param conn
+     * @Param limit
+     */
     public static function getAll($conn, $limit = 100)
     {
       // ==== Prepares the query ====

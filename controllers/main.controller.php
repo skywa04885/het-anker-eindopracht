@@ -35,6 +35,26 @@ namespace Framework\MainController
     $template->render('index.view.php');
   }
 
+    /**
+   * The get register controller
+   * ---
+   * @Param conn
+   */
+  function getLogin($conn)
+  {
+    // ==== Renders the page ====
+
+    // Creates the template
+    $template = new \Framework\Template(array(
+      'title' => 'Inloggen',
+      'activities' => $activities,
+      'stylesheets' => array_merge(array('/public/dist/css/register.css'), \Framework\Template::$t_DefaultVariables['stylesheets'])
+    ));
+
+    // Renders the template
+    $template->render('login.view.php');
+  }
+
   /**
    * The get index controller
    * ---
@@ -52,6 +72,55 @@ namespace Framework\MainController
 
     // Renders the template
     $template->render('contact.view.php');
+  }
+
+  /**
+   * The get index controller
+   * ---
+   * @Param conn
+   */
+  function getActivity($conn)
+  {
+    // ==== Parsed de request parameters ====
+
+    // Gets the id from the parameters
+    $id = $_GET['id'];
+
+    // Checks if the ID is there
+    if (!isset($id))
+    {
+      // Redirects
+      header('Location: /');
+      // Dies
+      die();
+    }
+
+    // ==== Gets the activity ====
+
+    // Gets the activity
+    $activity = \Framework\Models\Activity::getByID($conn, intval($id));
+
+    // Checks if the activity exists
+    if ($activity === null)
+    {
+      // Redirects
+      header('Location: /');
+      // Dies
+      die();
+    }
+
+    // ==== Renders the page ====
+
+    // Creates the template
+    $template = new \Framework\Template(array(
+      'title' => 'Activiteit',
+      'stylesheets' => array_merge(array('/public/dist/css/activity.css'), \Framework\Template::$t_DefaultVariables['stylesheets']),
+      'activity' => $activity,
+      'take-part' => $_GET['take_part'] == 1
+    ));
+
+    // Renders the template
+    $template->render('activity.view.php');
   }
 
   /**
@@ -92,6 +161,7 @@ namespace Framework\MainController
     }
 
     // ==== Renders the HTML email template ====
+    
     ob_start();
     include(__DIR__ . '/../templates/contact.template.php');
     $html = ob_get_contents();

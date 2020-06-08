@@ -1,8 +1,8 @@
 <div class="error-wrapper">
   <!-- The left side of the error wrapper -->
   <div class="error-wrapper__left">
-    <h1><?= $this->getValue('errorCode') ?></h1>
-    <h2><?= $this->getValue('errorMessage') ?></h2>
+    <h2><?= $this->getValue('errorCode') ?></h2>
+    <h4><?= $this->getValue('errorMessage') ?></h4>
   </div>
   <!-- The right side of the error wrapper -->
   <div class="error-wrapper__right">

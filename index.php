@@ -106,7 +106,8 @@ try {
     $template = new Framework\Template(array(
       'errorCode' => '404',
       'errorMessage' => 'Pagina niet gevonden ! !',
-      'title' => 'Pagina niet gevonden'
+      'title' => 'Pagina niet gevonden',
+      'errorDetails' => 'De pagina die u heeft opgevraagd bestaat niet.'
     ));
 
     // Renders the template

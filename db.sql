@@ -18,6 +18,19 @@ CREATE TABLE IF NOT EXISTS `activities` (
     `a_image` varchar(255) not null
 );
 
+-- Creates the register table
+CREATE TABLE IF NOT EXISTS `registrations` (
+    `r_activity_id` INT(11) NOT NULL,
+    `r_user_id` INT(11) NOT NULL
+);
+
+-- Creates the users table
+CREATE TABLE IF NOT EXISTS `users` (
+    `u_id` INT(11) AUTO_INCREMENT PRIMARY KEY,
+    `u_password` TEXT(1024) NOT NULL,
+    `u_email` VARCHAR(255) NOT NULL
+);
+
 -- Creates the personal table
 CREATE TABLE IF NOT EXISTS `personal` (
     `p_id` INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -26,6 +39,6 @@ CREATE TABLE IF NOT EXISTS `personal` (
     `p_fancy_name` VARCHAR(64),
     `p_last_name` VARCHAR(128),
     `p_email` VARCHAR(255) NOT NULL,
-    # I'm not an idiot, when storing it like this, it will take up only 16 bits / 2 bytes, while an 4 char string would take up 4 bytes
+    -- I'm not an idiot, when storing it like this, it will take up only 16 bits / 2 bytes, while an 4 char string would take up 4 bytes
     `p_voucher` SMALLINT(3) NOT NULL
 );

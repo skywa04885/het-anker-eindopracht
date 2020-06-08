@@ -26,12 +26,12 @@ namespace Framework\MainRouter
       \Framework\MainController\getContact($conn);
     });
     
-    $router->get('/about', function ($conn) {
-      $renderer->setFile('/views/about.php');
+    $router->get('/activiteit', function ($conn) {
+      \Framework\MainController\getActivity($conn);
     });
-    
-    $router->get('/admin', function ($conn) {
-      $renderer->setFile('/views/admin.php');
+
+    $router->get('/login', function ($conn) {
+      \Framework\MainController\getLogin($conn);
     });
 
     $router->post('/rest/contact-submit', function ($conn) {

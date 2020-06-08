@@ -9,26 +9,26 @@
       <p>Velden met <span>*</span> zijn verplicht.</p>
       <!-- Naam -->
       <div class="form-input">
+        <input type="text" id="fullNameInput" required />
         <label for="fullNameInput">Naam<span>*</span>: </label>
-        <input type="text" id="fullNameInput" />
       </div>
       <p class="form-input__error" id="nameInputError"></p>
       <!-- Email -->
       <div class="form-input">
+        <input type="text" id="emailInput" required />
         <label for="emailInput">Email<span>*</span>: </label>
-        <input type="email" id="emailInput" />
       </div>
       <p class="form-input__error" id="emailInputError"></p>
       <!-- Subject -->
       <div class="form-input">
+        <input type="text" id="subjectInput" required />
         <label for="subjectInput">Subject<span>*</span>: </label>
-        <input type="text" id="subjectInput" />
       </div>
       <p class="form-input__error" id="subjectInputError"></p>
       <hr />
       <div class="form-input">
+        <textarea id="messageInput" cols="30" rows="10" required></textarea>
         <label for="messageInput">Bericht<span>*</span>: </label>
-        <textarea id="messageInput" cols="30" rows="10"></textarea>
       </div>
       <p class="form-input__error" id="messageInputError"></p>
       <hr />

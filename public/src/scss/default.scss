@@ -67,6 +67,15 @@ body, html {
   }
 }
 
+.btn-error {
+  background-color: #e72d2d;
+
+  &:hover {
+    background-color: #c92828;
+    box-shadow: 0 0 0 3px rgba(#e72d2d, 0.4);
+  }
+}
+
 .btn-white {
   background-color: #f2f2f2;
 
@@ -78,7 +87,7 @@ body, html {
 
 // ==== The default page elements ====
 
-h2, h3 {
+h2, h3, legend {
   color: map-get($colors, 'text-title');
   font-family: 'Lora', sans-serif;
   font-weight: 600;
@@ -122,6 +131,133 @@ hr {
     font-size: 0.9rem;
     line-height: 1.2rem;
     font-weight: 500;
+  }
+}
+
+.form {
+  & > .form__fieldset-outline {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px dotted #cacaca;
+  }
+
+  & > .form__fieldset {
+    margin: 1rem;
+
+    & > legend {
+      margin-left: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    & > p {
+      color: map-get($colors, 'text-muted');
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+
+      & > span {
+        color: map-get($colors, 'primary');
+      }
+    }
+
+    & > .form-input__error {
+      color: #e72d2d;
+      font-size: 0.8rem;
+      margin: 0;
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    & > .form-input__checkbox {
+      & > label {
+        color: #4e4e4e;
+        display: inline-block;
+        font-style: 0.9rem;
+        vertical-align: middle;
+      }
+
+      & > input {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
+    & > .form-input {
+      position: relative;
+      display: block;
+      width: calc(100% - 1rem);
+
+      & > label {
+        position: absolute;
+        transform: translateY(-50%);
+        left: 0.7rem;
+        font-size: 0.9rem;
+        background-color: #ffffff;
+        padding: 0rem 0.1rem;
+        font-family: sans-serif;
+        transition: all .12s;
+        font-weight: 500;
+        color: #4e4e4e;
+      }
+
+      & > input + label {
+        top: 50%;
+      }
+
+      & > textarea + label {
+        top: 1rem;
+      }
+
+      & > input, & > textarea {
+        width: calc(100% - 2 * 0.7rem);
+        padding: 0.7rem;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 1px solid #bebebe;
+        border-radius: $border-radius;
+        margin: 1px;
+
+        &:focus {
+          border: 2px solid map-get($colors, 'primary');
+          margin: 0;
+        }
+
+        &:focus + label {
+          color: map-get($colors, 'primary');
+        }
+
+        &:focus + label, &:valid + label {
+          top: 0;
+          font-size: 0.7rem;
+        }
+
+        &:focus:not(:valid) + label
+        {
+          top: 0;
+          font-size: 0.7rem;
+        }
+
+        &:invalid + label
+        {
+          font-size: 0.7rem;
+          color: #ff0000;
+        }
+
+
+        &:invalid
+        {
+          border: 2px solid #ff0000;
+          margin: 0;
+          outline: none;
+        }
+      }
+
+      &:not(:first-child)
+      {
+        margin-top: 1.5rem;
+      }
+    }
   }
 }
 
@@ -299,6 +435,68 @@ hr {
 
     & > div {
       flex: 2;
+    }
+  }
+}
+
+// ==== Error page ====
+
+.error-wrapper {
+  margin: 2rem 1rem;
+
+  @media only screen and (min-width: 900px) {
+    display: flex;
+
+    & > div {
+      flex: 2;
+    }  
+  }
+
+  & > div {
+    &:nth-child(1)
+    {
+      text-align: center;
+
+      & > h2 {
+        margin-left: 0;
+      }
+
+      & > h4 {
+        color: map-get($colors, 'text-muted');
+        font-style: 0.9rem;
+        font-weight: 500;
+      }
+    }
+
+    &:nth-child(2) {
+      & > p {
+        color: map-get($colors, 'primary');
+        font-style: 0.9rem;
+        font-weight: 400;
+      }
+
+      & > table {
+        margin-top: 1.2rem;
+
+        & > thead {
+          & > tr {
+            & > th {
+              text-align: left;
+              font-weight: 600;
+              color: map-get($colors, 'text-title');
+              font-size: 1.1rem;
+            }
+          }
+        }
+
+        & > tbody {
+          & > tr {
+            & > td {
+              color: map-get($colors, 'text-subtitle');
+            }
+          }
+        }
+      }
     }
   }
 }

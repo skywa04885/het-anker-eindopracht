@@ -61,10 +61,10 @@
                 <span><?= $activity->a_StartTime ?></span>
                 -
                 <span><?= $activity->a_EndTime ?></span>
-                , Plekken: <?=  $activity->a_Max - $activity->a_Used ?> / <?= $activity->a_Max ?>
+                , Plekken: <?=$activity->a_Max - $activity->a_Used ?> / <?= $activity->a_Max ?>
               </small>
             </p>
-            <a class="btn btn-primary">Bekijk activiteit</a>
+            <a class="btn btn-primary" href="/activiteit?id=<?= $activity->a_ID ?>" rel="alternate">Bekijk activiteit</a>
           </div>
         </li>
       <?php endforeach; ?>
