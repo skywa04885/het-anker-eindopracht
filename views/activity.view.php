@@ -63,4 +63,5 @@
     </fieldset>
   </form>
 </div>
+<script src="/public/dist/js/activity.js" defer></script>
 <?php endif; ?>

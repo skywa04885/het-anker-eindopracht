@@ -72,7 +72,7 @@ namespace Framework\Models
 
       // Prepares the statement
       $stmt = $conn->prepare(
-        'SELECT * FROM activities where a_id = :aid'
+        'SELECT * FROM `activities` where `a_id` = :aid'
       );
 
       // Binds the parameters
@@ -103,7 +103,7 @@ namespace Framework\Models
 
       // Prepares the statement
       $stmt = $conn->prepare(
-        'SELECT * FROM activities ORDER BY a_name ASC LIMIT :llmt'
+        'SELECT * FROM `activities` ORDER BY `a_name` ASC LIMIT :llmt'
       );
 
       // Binds the parameters

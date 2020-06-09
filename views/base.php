@@ -28,9 +28,15 @@
         <!-- The login things -->
         <div class="wrapper-nav__bar__right">
           <ul>
+            <?php if ($this->getValue('other')['session']->s_LoggedInType ===  \Framework\SessionLoginType::Anonymous): ?>
             <li>
               <a href="/login" class="btn btn-accent" rel="nofollow">Log in</a>
             </li>
+            <?php else: ?>
+            <li>
+              <a href="/logout" class="btn btn-accent" rel="nofollow">Log out</a>
+            </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>

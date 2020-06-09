@@ -34,8 +34,16 @@ namespace Framework\MainRouter
       \Framework\MainController\getLogin($conn);
     });
 
+    $router->get('/logout', function ($conn) {
+      \Framework\MainController\getLogout($conn);
+    });
+
     $router->post('/rest/contact-submit', function ($conn) {
       \Framework\MainController\postContact($conn);
+    });
+
+    $router->post('/rest/login-personal-submit', function ($conn) {
+      \Framework\MainController\postLoginPersonal($conn);
     });
   }
 }

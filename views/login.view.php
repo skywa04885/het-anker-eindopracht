@@ -12,7 +12,7 @@
         <input type="text" id="numberInput" required />
         <label for="numberInput">Personeels nummer<span>*</span>: </label>
       </div>
-      <p class="form-input__error" id="nameInputError"></p>
+      <p class="form-input__error" id="PersonalNumberInputError"></p>
       <!-- Email -->
       <div class="form-input">
         <input type="text" id="voucherInput" required />
@@ -38,16 +38,16 @@
         <input type="text" id="usernameInput" required />
         <label for="usernameInput">Gebruikersnaam<span>*</span>: </label>
       </div>
-      <p class="form-input__error" id="nameInputError"></p>
+      <p class="form-input__error" id="usernameInputError"></p>
       <!-- Email -->
       <div class="form-input">
         <input type="password" id="passwordInput" required />
         <label for="passwordInput">Wachtwoord<span>*</span>: </label>
       </div>
-      <p class="form-input__error" id="voucherCodeError"></p>
+      <p class="form-input__error" id="wachtwoordInputError"></p>
       <hr />
       <button class="btn btn-secondary" type="submit">Log in</button>
     </fieldset>
   </form>
 </div>
-<script src="/public/dist/js/register.js" defer></script>
+<script src="/public/dist/js/login.js" defer></script>
